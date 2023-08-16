@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Execute Command</title>
+</head>
+<body>
+    <form method="post" action="{% url 'execute_command' %}">
+        {% csrf_token %}
+        <input type="text" name="command" placeholder="Enter a Linux command">
+        <button type="submit">Execute</button>
+    </form>
+    
+    <div id="output-section">
+        {% if output %}
+            <pre>{{ output }}</pre>
+            <a href="{% url 'download_output' %}">Download Output</a>
+        {% endif %}
+    </div>
+</body>
+</html>
